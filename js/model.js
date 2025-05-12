@@ -18,9 +18,6 @@ function nickNameRemember(nickname) {
 }
 
 
-// function createMessageByText(messageText) {
-//   // return { text: messageText, nickname: }
-// }
 
 function hasMessageByText(messageText) {
   for (const message of messages) {
@@ -28,12 +25,6 @@ function hasMessageByText(messageText) {
   }
   return false
 }
-
-// function getMessageInNicknameList(nickname) {
-//   if (nickname === '') return
-//   nickname.push(nickname + ' ' + 'joined the nicname list')
-
-// }
 
 function getMessageByText(messageText) {
   for (const message of messages) {
