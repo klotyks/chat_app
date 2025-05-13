@@ -3,34 +3,18 @@ const nicknames = []
 
 
 function addMessage(message) {
-  // const memoNick = nickNameRemember(memory)
-  const addNicknameMessage = '[' + memory + ']' + ':' + message
+ 
+  const addNicknameMessage = '[' + currentNickname + ']' + ':' + message
   if (message === '') return
   messages.push(addNicknameMessage)
 
 }
 
-let memory
+let currentNickname
 
 function nickNameRemember(nickname) {
   if (nickname === '') return
-  memory = nickname
-}
-
-
-
-function hasMessageByText(messageText) {
-  for (const message of messages) {
-    if (message.text === messageText) return true
-  }
-  return false
-}
-
-function getMessageByText(messageText) {
-  for (const message of messages) {
-    if (message.text === messageText) return message
-  }
-  return null
+  currentNickname = nickname
 }
 
 function loginNickname(nickname) {
@@ -45,6 +29,6 @@ function loginNickname(nickname) {
 loginNickname('ivan')
 nicknames
 messages
-memory
+currentNickname
 addMessage('hi')
 messages
