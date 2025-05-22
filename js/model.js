@@ -1,13 +1,10 @@
 const messages = []
 const nicknames = []
 
-
 function addMessage(message) {
- 
   const addNicknameMessage = '[' + currentNickname + ']' + ':' + message
   if (message === '') return
   messages.push(addNicknameMessage)
-
 }
 
 let currentNickname
@@ -26,9 +23,9 @@ function loginNickname(nickname) {
 }
 
 
-loginNickname('ivan')
-nicknames
-messages
-currentNickname
-addMessage('hi')
-messages
+// loginNickname('ivan')
+// nicknames
+// messages
+// currentNickname
+// addMessage('hi')
+// messages
