@@ -7,15 +7,15 @@ function renderChat(messages) {
   }
 }
 
-function renderInput(text) {
-  const elInputText = document.querySelector('#input_msg')
-  elInputText.value = '@' + text
+// function renderInput(text) {
+//   const elInputText = document.querySelector('#input_msg')
+//   elInputText.value = '@' + text
 
-}
+// }
 
 function onClickSpan (e) {
   const text = e.target.textContent
-  renderInput(text)
+  handleMarkedMessage(text)
 }
 
 

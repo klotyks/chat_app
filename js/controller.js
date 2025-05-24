@@ -13,3 +13,7 @@ function handleOnKeyPressAdd(message) {
   renderChat(messages)
 }
 
+function handleMarkedMessage (text) {
+  markedMessage(text)
+  
+}

@@ -27,21 +27,27 @@ function addMessage(message) {
   messages.push(formattedMessage)
 }
 
+function markedMessage (text) {
+  const elInputText = document.querySelector('#input_msg')
+  elInputText.value = '@' + text
+}
+
+
+
 function loginNickname(nickname) {
   if (nickname === '') return
   currentNickname = nickname
 
-  // if (true) return
-
+  if (nicknames.includes(nickname)) return
   nicknames.push(nickname)
-
   addMessage()
+
 }
 
-loginNickname('ivan')
-loginNickname('ivan')
-nicknames
-messages
-currentNickname
-addMessage('hi')
-messages
+// loginNickname('ivan')
+// loginNickname('ivan')
+// nicknames
+// messages
+// currentNickname
+// addMessage('hi')
+// messages
