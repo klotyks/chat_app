@@ -1,6 +1,7 @@
-function handleAddMessage(message) {
-  addMessage(message)
+function handleAddMessage() {
+  addMessage()
   renderChat(messages)
+  renderInputMessage(message)
 }
 
 function handleAddNickname(nickname) {
@@ -8,12 +9,12 @@ function handleAddNickname(nickname) {
   renderNicknameList(nicknames)
 }
 
-function handleOnKeyPressAdd(message) {
-  addMessage(message)
-  renderChat(messages)
+function handleMarkedMessage(text) {
+  markedMessage(text)
+  renderInputMessage(currentMessage)
 }
 
-function handleMarkedMessage (text) {
-  markedMessage(text)
-  renderInput(currentMessage)
+function handleSetMessage(message) {
+  setCurrentMessage(message)
+  // renderInputMessage(currentMessage)
 }

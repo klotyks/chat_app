@@ -1,21 +1,21 @@
+const bannedWords = ['banana', 'cucumber', 'tomato']
 const messages = []
 const nicknames = []
 let currentMessage = ''
 let currentNickname
-const bannedWords = ['banana','cucumber','tomato']
 
-function addMessage(message) {
-  let formattedMessage = message
-    ? `[${currentNickname}]: ${message}`
+function addMessage() {
+  let formattedMessage = currentMessage
+    ? `[${currentNickname}]: ${currentMessage}`
     : `{system} ${currentNickname} joined the chat`
+  if (isBadMessage(formattedMessage)) return
   messages.push(formattedMessage)
-
+  currentMessage = ''
 }
 
-function currentMessageT(text) {
-  currentMessage = text
+function setCurrentMessage(message) {
+  currentMessage = message
 }
-
 
 function markedMessage(nickname) {
   if (currentMessage.includes(nickname)) return
@@ -29,16 +29,23 @@ function loginNickname(nickname) {
   if (nicknames.includes(nickname)) return
   nicknames.push(nickname)
   addMessage()
-
 }
 
-function bannedWordsForChat () {
-  
+function isBadMessage(message) {
+  for (const bannedWord of bannedWords) {
+    bannedWord
+    if (message.includes(bannedWord)) return message.includes(bannedWord)
+  }
+  return false
 }
 
-// loginNickname('ivan')
-// nicknames
-// messages
-// currentNickname
-// addMessage('hi')
-// messages
+console.log(isBadMessage('hello im tomato'))
+
+loginNickname('ivan')
+nicknames
+messages
+currentNickname
+currentMessage
+addMessage()
+messages
+currentMessage

@@ -1,3 +1,31 @@
+function onClickSpan(e) {
+  const nickname = e.target.textContent
+  handleMarkedMessage(nickname)
+}
+function onInputMesssage(e) {
+  const message = e.target.value
+  handleSetMessage(message)
+}
+function onKeyPressSendMessage(e) {
+  if (e.key !== 'Enter') return
+  handleAddMessage()
+}
+function onKeyPressLogin(e) {
+  if (e.key !== 'Enter') return
+  onClickButtonAddNickname()
+  const elInput = document.querySelector('#chk_sm')
+  elInput.checked = true
+}
+function onClickButtonSendMessage() {
+  handleAddMessage()
+}
+function onClickButtonAddNickname() {
+  const elInputNickname = document.querySelector('#input_nickname')
+  const nickname = elInputNickname.value
+  handleAddNickname(nickname)
+  renderChat(messages)
+}
+
 function renderChat(messages) {
   const elChatFlow = document.querySelector('.chat-flow')
   elChatFlow.innerHTML = ''
@@ -6,66 +34,10 @@ function renderChat(messages) {
     elChatFlow.appendChild(elDivSystemeM)
   }
 }
-
-function renderInput(text) {
+function renderInputMessage(message) {
   const elInputText = document.querySelector('#input_msg')
-  elInputText.value = text
-
+  elInputText.value = message
 }
-
-function onClickSpan(e) {
-  const text = e.target.textContent
-  const message = elInputText.value
-  currentMessageT(message)
-  handleMarkedMessage(text)
-
-}
-
-
-function onKeyPressSendMessage(e) {
-  if (e.key !== 'Enter') return
-  onClickButtonSendMessage()
-}
-
-function onKeyPressLogin(e) {
-  if (e.key !== 'Enter') return
-  onClickButtonAddNickname()
-  const elInput = document.querySelector('#chk_sm')
-  elInput.checked = true
-}
-
-
-function generateMessage(message) {
- 
-  const elDivSystemeM = document.createElement('div')
- 
-  const elI = document.createElement('i')
-
-  elI.textContent = message
-
-  elDivSystemeM.classList.add('system-message')
- 
-  elDivSystemeM.appendChild(elI)
-  
-  return elDivSystemeM
-
-}
-
-function onClickButtonSendMessage() {
-  const elInputText = document.querySelector('#input_msg')
-  const message = elInputText.value
-  handleAddMessage(message)
-  // onKeyPressSendMessage(message)
-  elInputText.value = ''
-}
-
-function onInputMesssage(e) {
-  const text = e.target.value
-  currentMessageT(text)
-}
-
-
-
 function renderNicknameList(nicknames) {
   const elNickname = document.querySelector('.nickname-list')
   elNickname.innerHTML = ''
@@ -74,44 +46,32 @@ function renderNicknameList(nicknames) {
     elNickname.appendChild(elNickNameList)
   }
 }
-
-
+function generateMessage(message) {
+  const elDivSystemeM = document.createElement('div')
+  const elI = document.createElement('i')
+  elI.textContent = message
+  elDivSystemeM.classList.add('system-message')
+  elDivSystemeM.appendChild(elI)
+  return elDivSystemeM
+}
 function generateNickname(nickname) {
   const elDivWrapSpan = document.createElement('div')
   const elSpan = document.createElement('span')
-
   elSpan.textContent = nickname
-
   elDivWrapSpan.classList.add('wrap-span')
-
   elDivWrapSpan.appendChild(elSpan)
-
   elSpan.onclick = onClickSpan
-
   return elDivWrapSpan
 }
 
-
-function onClickButtonAddNickname() {
-  const elInputNickname = document.querySelector('#input_nickname')
-  const nickname = elInputNickname.value
-  handleAddNickname(nickname)
-  renderChat(messages)
-}
-
 const elLabelButton = document.querySelector('#btn_enter')
-elLabelButton.onclick = onClickButtonAddNickname
-
-
 const elInputSend = document.querySelector('#btn_send_msg')
-elInputSend.onclick = onClickButtonSendMessage
-
-
 const elInputMessage = document.querySelector('#input_msg')
-elInputMessage.onkeypress = onKeyPressSendMessage
-
 const elInputLogin = document.querySelector('#input_nickname')
-elInputLogin.onkeypress = onKeyPressLogin
-
 const elInputText = document.querySelector('#input_msg')
+
+elLabelButton.onclick = onClickButtonAddNickname
+elInputSend.onclick = onClickButtonSendMessage
+elInputMessage.onkeypress = onKeyPressSendMessage
+elInputLogin.onkeypress = onKeyPressLogin
 elInputText.oninput = onInputMesssage
