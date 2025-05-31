@@ -15,5 +15,5 @@ function handleOnKeyPressAdd(message) {
 
 function handleMarkedMessage (text) {
   markedMessage(text)
-  
+  renderInput(currentMessage)
 }

@@ -7,15 +7,18 @@ function renderChat(messages) {
   }
 }
 
-// function renderInput(text) {
-//   const elInputText = document.querySelector('#input_msg')
-//   elInputText.value = '@' + text
+function renderInput(text) {
+  const elInputText = document.querySelector('#input_msg')
+  elInputText.value = text
 
-// }
+}
 
-function onClickSpan (e) {
+function onClickSpan(e) {
   const text = e.target.textContent
+  const message = elInputText.value
+  currentMessageT(message)
   handleMarkedMessage(text)
+
 }
 
 
@@ -24,29 +27,26 @@ function onKeyPressSendMessage(e) {
   onClickButtonSendMessage()
 }
 
+function onKeyPressLogin(e) {
+  if (e.key !== 'Enter') return
+  onClickButtonAddNickname()
+  const elInput = document.querySelector('#chk_sm')
+  elInput.checked = true
+}
 
 
 function generateMessage(message) {
-  // const elDivChatFLow = document.createElement('div')
+ 
   const elDivSystemeM = document.createElement('div')
-  // const elDivNormalM = document.createElement('div')
+ 
   const elI = document.createElement('i')
-  // const elSpan = document.createElement('span')
-
 
   elI.textContent = message
-  // elSpan.textContent = message
 
-  // elDivChatFLow.classList.add('chat-flow')
   elDivSystemeM.classList.add('system-message')
-  // elDivNormalM.classList.add('normal-message')
-  // elSpan.classList.add('msg-line')
-
-  // elDivChatFLow.appendChild(elDivSystemeM)
-  // elDivChatFLow.appendChild(elDivNormalM)
+ 
   elDivSystemeM.appendChild(elI)
-  // elDivNormalM.appendChild(elSpan)
-
+  
   return elDivSystemeM
 
 }
@@ -58,6 +58,13 @@ function onClickButtonSendMessage() {
   // onKeyPressSendMessage(message)
   elInputText.value = ''
 }
+
+function onInputMesssage(e) {
+  const text = e.target.value
+  currentMessageT(text)
+}
+
+
 
 function renderNicknameList(nicknames) {
   const elNickname = document.querySelector('.nickname-list')
@@ -103,4 +110,8 @@ elInputSend.onclick = onClickButtonSendMessage
 const elInputMessage = document.querySelector('#input_msg')
 elInputMessage.onkeypress = onKeyPressSendMessage
 
+const elInputLogin = document.querySelector('#input_nickname')
+elInputLogin.onkeypress = onKeyPressLogin
 
+const elInputText = document.querySelector('#input_msg')
+elInputText.oninput = onInputMesssage
