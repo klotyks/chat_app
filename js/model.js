@@ -4,7 +4,9 @@ const nicknames = []
 let currentMessage = ''
 let currentNickname
 
+
 function addMessage() {
+  if(currentMessage === '') return
   let formattedMessage = currentMessage
     ? `[${currentNickname}]: ${currentMessage}`
     : `{system} ${currentNickname} joined the chat`
@@ -18,7 +20,8 @@ function setCurrentMessage(message) {
 }
 
 function markedMessage(nickname) {
-  if (currentMessage.includes(nickname)) return
+  // if (currentMessage.includes(currentNickname)) return
+  if (currentMessage.includes()) return
   currentMessage = '@' + nickname + ' ' + currentMessage
 }
 
@@ -28,6 +31,7 @@ function loginNickname(nickname) {
 
   if (nicknames.includes(nickname)) return
   nicknames.push(nickname)
+  currentMessage = undefined
   addMessage()
 }
 
@@ -42,10 +46,10 @@ function isBadMessage(message) {
 console.log(isBadMessage('hello im tomato'))
 
 loginNickname('ivan')
+loginNickname('roman')
 nicknames
-messages
-currentNickname
 currentMessage
-addMessage()
-messages
+markedMessage('roman')
+currentMessage
+markedMessage('ivan')
 currentMessage

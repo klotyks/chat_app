@@ -1,7 +1,7 @@
 function handleAddMessage() {
   addMessage()
   renderChat(messages)
-  renderInputMessage(message)
+  renderInputMessage(currentMessage)
 }
 
 function handleAddNickname(nickname) {
