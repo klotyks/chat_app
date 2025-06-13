@@ -2,6 +2,11 @@ function onClickSpan(e) {
   const nickname = e.target.textContent
   handleMarkedMessage(nickname)
 }
+
+function onRightClick (e) {
+  e.preventDefault()
+  handleRightClick(e.target.textContent)
+}
 function onInputMesssage(e) {
   const message = e.target.value
   handleSetMessage(message)
@@ -38,11 +43,14 @@ function renderInputMessage(message) {
   const elInputText = document.querySelector('#input_msg')
   elInputText.value = message
 }
-function renderNicknameList(nicknames) {
+function renderNicknameList(nicknames,currentNickname) {
+  let isCurrent
   const elNickname = document.querySelector('.nickname-list')
   elNickname.innerHTML = ''
   for (const nickname of nicknames) {
-    const elNickNameList = generateNickname(nickname)
+    if(nickname === currentNickname) isCurrent = true
+     else isCurrent = false
+    const elNickNameList = generateNickname(nickname,isCurrent)
     elNickname.appendChild(elNickNameList)
   }
 }
@@ -54,13 +62,17 @@ function generateMessage(message) {
   elDivSystemeM.appendChild(elI)
   return elDivSystemeM
 }
-function generateNickname(nickname) {
+function generateNickname(nickname,isCurrent) {
   const elDivWrapSpan = document.createElement('div')
   const elSpan = document.createElement('span')
   elSpan.textContent = nickname
+  if(isCurrent){
+    elSpan.classList.add('current-nickname')
+  }
   elDivWrapSpan.classList.add('wrap-span')
   elDivWrapSpan.appendChild(elSpan)
   elSpan.onclick = onClickSpan
+  elSpan.oncontextmenu = onRightClick
   return elDivWrapSpan
 }
 

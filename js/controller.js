@@ -6,7 +6,7 @@ function handleAddMessage() {
 
 function handleAddNickname(nickname) {
   loginNickname(nickname)
-  renderNicknameList(nicknames)
+  renderNicknameList(nicknames,currentNickname)
 }
 
 function handleMarkedMessage(text) {
@@ -17,4 +17,9 @@ function handleMarkedMessage(text) {
 function handleSetMessage(message) {
   setCurrentMessage(message)
   // renderInputMessage(currentMessage)
+}
+
+function handleRightClick (text) {
+  loginNickname(text)
+   renderNicknameList(nicknames,currentNickname)
 }

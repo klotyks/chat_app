@@ -17,6 +17,12 @@
   border-left: 1px solid #fff2;
 }
 
+.current-nickname {
+  color: crimson;
+  font-style: italic;
+  text-decoration: underline;
+}
+
 .light .wrap-send-message {
   position: relative;
 }
